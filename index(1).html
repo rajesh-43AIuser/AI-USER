@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Demo Website</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    /* Sliding Background */
+    .slider {
+        position: fixed;
+        width: 300%;
+        height: 100%;
+        display: flex;
+        animation: slide 15s infinite;
+        z-index: -1;
+    }
+
+    .slide {
+        width: 100%;
+        height: 100%;
+    }
+
+    .slide:nth-child(1) { background: linear-gradient(120deg, #1e3c72, #2a5298); }
+    .slide:nth-child(2) { background: linear-gradient(120deg, #42275a, #734b6d); }
+    .slide:nth-child(3) { background: linear-gradient(120deg, #134e5e, #71b280); }
+
+    @keyframes slide {
+        0% { transform: translateX(0); }
+        33% { transform: translateX(-100%); }
+        66% { transform: translateX(-200%); }
+        100% { transform: translateX(0); }
+    }
+
+    .container {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+    }
+
+    .question {
+        display: none;
+        background: rgba(0,0,0,0.5);
+        padding: 30px;
+        border-radius: 15px;
+        width: 80%;
+        max-width: 400px;
+    }
+
+    .question.active {
+        display: block;
+    }
+
+    .emoji span {
+        font-size: 40px;
+        cursor: pointer;
+        margin: 10px;
+        transition: transform 0.2s;
+        display: inline-block;
+    }
+
+    .emoji span:hover {
+        transform: scale(1.3);
+    }
+
+    .options button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+
+    .options button:hover {
+        background: #ffd369;
+    }
+
+    /* Designer Credit */
+    .credit {
+        position: fixed;
+        bottom: 10px;
+        right: 15px;
+        font-size: 14px;
+        color: white;
+        background: rgba(0,0,0,0.5);
+        padding: 6px 12px;
+        border-radius: 20px;
+        letter-spacing: 0.5px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="slider">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+</div>
+
+<div class="container">
+
+    <h1>WELCOME TO THE DEMO WEBSITE</h1>
+
+    <!-- Question 1 -->
+    <div class="question active" id="q1">
+        <h2>Did you like our website?</h2>
+        <div class="emoji">
+            <span onclick="nextQuestion()">😠<br>Unsatisfied</span>
+            <span onclick="nextQuestion()">🙂<br>Satisfied</span>
+            <span onclick="nextQuestion()">😐<br>Average</span>
+            <span onclick="nextQuestion()">😊<br>Good</span>
+            <span onclick="nextQuestion()">😍<br>Excellent</span>
+        </div>
+    </div>
+
+    <!-- Question 2 -->
+    <div class="question" id="q2">
+        <h2>Rate our website</h2>
+        <div class="options">
+            <button onclick="submitForm()">Excellent</button>
+            <button onclick="submitForm()">Average</button>
+            <button onclick="submitForm()">Poor</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Credit Text -->
+<div class="credit">
+    This is designed by RAJESH (The AI USER)
+</div>
+
+<script>
+    function nextQuestion() {
+        document.getElementById("q1").classList.remove("active");
+        document.getElementById("q2").classList.add("active");
+    }
+
+    function submitForm() {
+        alert("THANKYOU VISIT AGAIN");
+    }
+</script>
+
+</body>
+</html>
